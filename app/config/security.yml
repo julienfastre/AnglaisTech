@@ -1,10 +1,15 @@
 security:
     encoders:
-        SOFFT\AnglaisBundle\Entity\User: sha1
+        SOFFT\AnglaisBundle\Entity\User: plaintext
 
     providers:
-          entity:
-            entity: { class: SOFFT\AnglaisBundle\Entity\User, property: username }
+      chain_provider:
+        providers: [in_memory, main]
+      in_memory: 
+        users:
+          julien: {password: julien, roles: 'ROLE_USER'}
+      main:
+        entity: { class: SOFFTAnglaisBundle:User, property: username }
 
     firewalls:
       secured_area:
