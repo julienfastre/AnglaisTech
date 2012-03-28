@@ -14,7 +14,6 @@ class Mot
      */
     private $id;
 
-
     /**
      * Get id
      *
