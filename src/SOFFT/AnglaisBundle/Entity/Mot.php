@@ -3,6 +3,8 @@
 namespace SOFFT\AnglaisBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use SOFFT\AnglaisBundle\Entity\User;
+use \DateTime;
 
 /**
  * SOFFT\AnglaisBundle\Entity\Mot
@@ -105,6 +107,11 @@ class Mot
     {
         return $this->explication;
     }
+    
+    public function cadenas(User $user ) {
+        $this->setCadenas(new DateTime());
+        $this->setCadenaswho($user);
+    }
 
     /**
      * Set cadenas
@@ -138,7 +145,7 @@ class Mot
      *
      * @param SOFFT\AnglaisBundle\Entity\User $cadenaswho
      */
-    private function setCadenaswho(\SOFFT\AnglaisBundle\Entity\User $cadenaswho)
+    private function setCadenaswho(User $cadenaswho)
     {
         $this->cadenaswho = $cadenaswho;
     }
@@ -151,5 +158,24 @@ class Mot
     public function getCadenaswho()
     {
         return $this->cadenaswho;
+    }
+    
+    public function isCadenas() {
+        
+        if ($this->getCadenas() === NULL )
+            return false;
+        else 
+        {
+            $now = new DateTime();
+            if (( $now->getTimestamp() - $this->getCadenas()->getTimeStamp()) > 300) 
+            {
+                return false;
+            } else 
+            {
+                return true;
+            }
+            
+        }
+            
     }
 }

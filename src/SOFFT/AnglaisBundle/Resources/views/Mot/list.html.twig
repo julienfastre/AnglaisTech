@@ -10,9 +10,10 @@
     </thead>
     <tbody>
     {% for mot in list %}
-        <tr>
+        <tr  >
             <td> {{mot.fr}} </td>
             <td> {{mot.en}} </td>
+            <td> {{mot.isCadenas}} </td>
         </tr>
     {% else %}
         <tr><td>Pas de mot</td></tr>
