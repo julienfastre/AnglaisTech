@@ -1,14 +1,14 @@
 SOFFTAnglaisBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: SOFFTAnglaisBundle:Default:index }
-    
+  pattern:  /hello/{name}
+  defaults: { _controller: SOFFTAnglaisBundle:Default:index }
+
 login:
   pattern: /login
   defaults: {_controller: SOFFTAnglaisBundle:Security:login }
 
 login_check:
   pattern: /login_check
-  default: {_controller: SOFFTAnglaisBundle:Security:login_check }
+  defaults: {_controller: SOFFTAnglaisBundle:Security:login_check }
     
 SAB_liste_mot:
   pattern: /mot/liste/{page}
