@@ -1,5 +1,7 @@
 {% extends 'SOFFTAnglaisBundle::layout.html.twig' %}
 
+{% block body %}
+
 {% if error %}
     <div>{{ error.message }}</div>
 {% endif %}
@@ -18,3 +20,5 @@
 
     <button type="submit">login</button>
 </form>
+
+{% endblock %}
