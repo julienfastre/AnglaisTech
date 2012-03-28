@@ -4,7 +4,7 @@
 /app/logs/*
 /vendor/
 /app/config/parameters.ini
-
+bd.sqlite
 
 
 

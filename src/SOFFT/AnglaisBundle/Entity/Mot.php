@@ -20,10 +20,7 @@ class Mot
      *
      * @return integer 
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+
     /**
      * @var string $fr
      */
@@ -44,6 +41,11 @@ class Mot
      */
     private $cadenas;
 
+    
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set fr
@@ -110,7 +112,7 @@ class Mot
      *
      * @param datetime $cadenas
      */
-    public function setCadenas($cadenas)
+    private function setCadenas($cadenas)
     {
         $this->cadenas = $cadenas;
     }
@@ -124,30 +126,28 @@ class Mot
     {
         return $this->cadenas;
     }
+    
+    
     /**
      * @var SOFFT\AnglaisBundle\Entity\User
      */
     private $cadenaswho;
 
-    public function __construct()
-    {
-        $this->cadenaswho = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
+
     /**
-     * Add cadenaswho
+     * Set cadenaswho
      *
      * @param SOFFT\AnglaisBundle\Entity\User $cadenaswho
      */
-    public function addUser(\SOFFT\AnglaisBundle\Entity\User $cadenaswho)
+    private function setCadenaswho(\SOFFT\AnglaisBundle\Entity\User $cadenaswho)
     {
-        $this->cadenaswho[] = $cadenaswho;
+        $this->cadenaswho = $cadenaswho;
     }
 
     /**
      * Get cadenaswho
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return SOFFT\AnglaisBundle\Entity\User 
      */
     public function getCadenaswho()
     {

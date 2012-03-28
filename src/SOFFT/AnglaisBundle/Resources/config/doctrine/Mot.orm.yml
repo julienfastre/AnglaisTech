@@ -17,9 +17,8 @@ SOFFT\AnglaisBundle\Entity\Mot:
     cadenas:
       type: datetime
       nullable: true
-  oneToMany:
+  manyToOne:
     cadenaswho:
       targetEntity: User
-      mappedBy: motcadenas
       nullable: true
       
