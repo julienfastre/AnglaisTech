@@ -7,13 +7,20 @@
     <thead>
         <th> Français </th>
         <th> Anglais </th>
+        <th>Cadenassé ? </th>
     </thead>
     <tbody>
     {% for mot in list %}
         <tr  >
             <td> {{mot.fr}} </td>
             <td> {{mot.en}} </td>
-            <td> {{mot.isCadenas}} </td>
+            <td> 
+                 {% if mot.beingCadenas %}
+                    oui
+                 {% else %}
+                    non
+                 {% endif %}
+            </td>
         </tr>
     {% else %}
         <tr><td>Pas de mot</td></tr>

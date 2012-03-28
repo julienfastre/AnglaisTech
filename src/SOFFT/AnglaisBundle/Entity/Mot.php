@@ -160,7 +160,7 @@ class Mot
         return $this->cadenaswho;
     }
     
-    public function isCadenas() {
+    public function isBeingCadenas() {
         
         if ($this->getCadenas() === NULL )
             return false;
