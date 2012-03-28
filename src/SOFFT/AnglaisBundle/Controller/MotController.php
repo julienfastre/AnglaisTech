@@ -20,6 +20,17 @@ class MotController extends Controller {
         return $this->render('SOFFTAnglaisBundle:Mot:list.html.twig', array ('list' => $list));
         
     }
+    
+    public function viewAction($motId) {
+        $em = $this->getDoctrine()->getEntityManager();
+        
+        $mot = $em->getRepository('SOFFTAnglaisBundle:Mot')->findBy($motId);
+        $user = $this->get('security.context')->getToken()->getUser();
+        
+        $mot->cadenas($user);
+        
+        return $this->render('SOFFTAnglaisBundle:Mot:view.html.twig', array('mot' => $mot));
+    }
 }
 
 
