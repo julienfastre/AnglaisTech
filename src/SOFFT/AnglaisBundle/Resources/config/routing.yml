@@ -3,7 +3,7 @@ SOFFTAnglaisBundle_homepage:
   defaults: { _controller: SOFFTAnglaisBundle:Default:index }
 
 login:
-  pattern: /login
+  pattern: /logina
   defaults: {_controller: SOFFTAnglaisBundle:Security:login }
 
 login_check:

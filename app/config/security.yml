@@ -7,7 +7,7 @@ security:
         providers: [in_memory, main]
       in_memory: 
         users:
-          julien: {password: julien, roles: 'ROLE_USER'}
+          julien: {password: julien, roles: ROLE_USER}
       main:
         entity: { class: SOFFTAnglaisBundle:User, property: username }
 
