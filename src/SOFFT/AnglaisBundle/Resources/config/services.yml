@@ -1,0 +1,7 @@
+parameters:
+#    sofft_anglais.example.class: SOFFT\AnglaisBundle\Example
+
+services:
+#    sofft_anglais.example:
+#        class: %sofft_anglais.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

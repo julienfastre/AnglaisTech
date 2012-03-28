@@ -1,0 +1,38 @@
+{% extends 'SOFFTAnglaisBundle::layout.html.twig' %}
+
+{% block body %}
+<h1>Liste des mots à traduire</h1>
+
+<table>
+    <thead>
+        <th> Français </th>
+        <th> Anglais </th>
+    </thead>
+    <tbody>
+    {% for mot in list %}
+        <tr>
+            <td> {{mot.fr}} </td>
+            <td> {{mot.en}} </td>
+        </tr>
+    {% else %}
+        <tr><td>Pas de mot</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

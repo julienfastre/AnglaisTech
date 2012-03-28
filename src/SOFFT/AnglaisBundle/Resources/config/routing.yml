@@ -1,0 +1,7 @@
+SOFFTAnglaisBundle_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: SOFFTAnglaisBundle:Default:index }
+    
+SAB_liste_mot:
+  pattern: /mot/liste/{page}
+  defaults: { _controller: SOFFTAnglaisBundle:Mot:list }

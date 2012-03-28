@@ -1,0 +1,25 @@
+SOFFT\AnglaisBundle\Entity\Mot:
+  type: entity
+  table: mots
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    fr:
+      type: string
+      nullable: true
+    en:
+      type: string
+      nullable: true
+    explication:
+      type: string
+    cadenas:
+      type: datetime
+      nullable: true
+  oneToMany:
+    cadenaswho:
+      targetEntity: User
+      mappedBy: motcadenas
+      nullable: true
+      
