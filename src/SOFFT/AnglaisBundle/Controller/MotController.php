@@ -24,7 +24,7 @@ class MotController extends Controller {
     public function viewAction($motId) {
         $em = $this->getDoctrine()->getEntityManager();
         
-        $mot = $em->getRepository('SOFFTAnglaisBundle:Mot')->findBy($motId);
+        $mot = $em->getRepository('SOFFTAnglaisBundle:Mot')->find($motId);
         $user = $this->get('security.context')->getToken()->getUser();
         
         $mot->cadenas($user);

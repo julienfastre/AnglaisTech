@@ -5,3 +5,7 @@ SOFFTAnglaisBundle_homepage:
 SAB_liste_mot:
   pattern: /mot/liste/{page}
   defaults: { _controller: SOFFTAnglaisBundle:Mot:list }
+  
+SAB_vie_mot:
+  pattern: /mot/view/{motId}
+  defaults: {_controller: SOFFTAnglaisBundle:Mot:view }

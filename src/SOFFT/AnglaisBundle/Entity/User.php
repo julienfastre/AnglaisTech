@@ -89,7 +89,7 @@ class User implements UserInterface
     }
 
     public function getRoles() {
-        return 'ROLE_ADMIN';
+        return array('ROLE_USER');
         
     }
 
