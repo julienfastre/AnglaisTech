@@ -5,6 +5,7 @@ namespace SOFFT\AnglaisBundle\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use SOFFT\AnglaisBundle\Entity\User;
+use Symfony\Component\HttpFoundation\Request;
 
 
 /**
