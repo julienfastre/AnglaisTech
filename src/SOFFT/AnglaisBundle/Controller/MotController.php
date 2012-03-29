@@ -33,13 +33,15 @@ class MotController extends Controller {
             throw $this->createNotFoundException("Le mot demandé n'existe pas");
         }
         
-        if ($mot->isBeingCadenas())
+        $user = $this->get('security.context')->getToken()->getUser();
+        
+        if ($mot->isBeingCadenas() && !$user->equals($mot->getCadenasWho()) )
         {
             return $this->render("SOFFTAnglaisBundle:Mot:motinaccessible.html.twig", array("mot" => $mot, "user" => $mot->getCadenasWho()));
         }
         
         
-        $user = $this->get('security.context')->getToken()->getUser();
+        
         
         $mot->cadenas($user);
         $em->flush();
