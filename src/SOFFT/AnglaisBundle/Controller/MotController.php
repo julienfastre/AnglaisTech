@@ -41,13 +41,29 @@ class MotController extends Controller {
             return $this->render("SOFFTAnglaisBundle:Mot:motinaccessible.html.twig", array("mot" => $mot, "user" => $mot->getCadenasWho()));
         }
         
-        
-        
-        
         $mot->cadenas($user);
         $em->flush();
         
         $form = $this->createForm(new \SOFFT\AnglaisBundle\Form\MotType(), $mot);
+        
+        if($request->getMethod() == 'POST') {
+            $form->bindRequest($request);
+            
+            if ($form->isValid()) {
+                
+                $mot = $form->getData();
+                
+                $mot->resetCadenas();
+
+                if ($mot->getId() === NULL)
+                    $this->getDoctrine()->getEntityManager()->persist($user);
+                $this->getDoctrine()->getEntityManager()->flush();
+                
+                $this->get('session')->setFlash('notice', 'Vos modifications ont été enregistrées');
+                                
+                return $this->redirect($this->generateUrl('SAB_liste_mot', array('page' => 1 ) ));
+            }
+        }
         
         return $this->render('SOFFTAnglaisBundle:Mot:view.html.twig', array('form' => $form->createView(), 'mot' => $mot));
     }
