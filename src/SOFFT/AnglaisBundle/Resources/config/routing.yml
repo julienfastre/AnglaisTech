@@ -11,6 +11,10 @@ login_check:
   
 logout:
   pattern: /logout
+  
+SAB_create_account:
+  pattern: /account/new
+  defaults: { _controller: SOFFTAnglaisBundle:Security:new }
     
 SAB_liste_mot:
   pattern: /mot/liste/{page}

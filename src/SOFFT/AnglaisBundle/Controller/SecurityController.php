@@ -5,6 +5,7 @@ namespace SOFFT\AnglaisBundle\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
+use SOFFT\AnglaisBundle\Entity\User;
 
 /**
  * Description of securityController
@@ -32,8 +33,18 @@ class securityController extends Controller {
         ));
     }
     
-    public function login_checkAction() {
-        return new Response("login_check");
+    public function newAction() {
+        $user = new User;
+        
+        $form = $this->createFormBuilder($user)
+                ->add('username')
+                ->add('password')
+                ->getForm();
+        
+        return $this->render('SOFFTAnglaisBundle:Security:createaccount.html.twig', array("form" => $form->createView()));
+        
     }
+    
+    
 }
 
