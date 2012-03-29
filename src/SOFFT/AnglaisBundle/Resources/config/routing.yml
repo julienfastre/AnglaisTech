@@ -8,7 +8,9 @@ login:
 
 login_check:
   pattern: /login_check
-  defaults: {_controller: SOFFTAnglaisBundle:Security:login_check }
+  
+logout:
+  pattern: /logout
     
 SAB_liste_mot:
   pattern: /mot/liste/{page}

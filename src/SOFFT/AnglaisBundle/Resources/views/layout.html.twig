@@ -6,12 +6,39 @@
             <!-- Aucun fichier javascript ajouté par le template -->
         {% endblock %}
 
+        <style type="text/css">
+            #menu {
+                padding: 10px;
+                position: fixed;
+                top: 0; left: 0;
+                background-color: white;
+                box-shadow: -2px 2px 2px 4px rgba(0,0,0,0.2);
+            }
+            #menu ul {
+                list-style-type: none;
+            }
+            #menu ul li {
+                display: inline;
+                margin: 10px;
+            }
+            #body {
+                margin-top: 70px;
+            }
+        </style>
+
         {% block css %}
             <!-- Aucun fichier css ajouté par le template -->
         {% endblock %}
         
     </head>
     <body>
-        {% block body %}Rien dans le body...{% endblock %}
+        <div id="menu">
+            <ul>
+                <li><a href="{{path('logout')}}">Se déconnecter</a></li>
+            </ul>
+        </div>
+        <div id="body">
+            {% block body %}Rien dans le body...{% endblock %}
+        </div>
     </body>
 </html>
