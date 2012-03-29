@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use SOFFT\AnglaisBundle\Entity\User;
 
+
 /**
  * Description of MotController
  *
@@ -26,6 +27,18 @@ class MotController extends Controller {
         $em = $this->getDoctrine()->getEntityManager();
         
         $mot = $em->getRepository('SOFFTAnglaisBundle:Mot')->find($motId);
+        
+        if ($mot == NULL) 
+        {
+            throw $this->createNotFoundException("Le mot demandé n'existe pas");
+        }
+        
+        if ($mot->isBeingCadenas())
+        {
+            return $this->render("SOFFTAnglaisBundle:Mot:motinaccessible.html.twig", array("mot" => $mot, "user" => $mot->getCadenasWho()));
+        }
+        
+        
         $user = $this->get('security.context')->getToken()->getUser();
         
         $mot->cadenas($user);
