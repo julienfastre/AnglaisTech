@@ -2,6 +2,11 @@
 
 {% block body %}
 
+<form action="{{ path('SAB_view_mot', {'motId': mot.id}) }}" method="post" {{ form_enctype(form) }}>
+    {{ form_rest(form) }}
+
+    <input type="submit" />
+</form>
 
 
 

@@ -22,15 +22,18 @@ class MotController extends Controller {
         
     }
     
-    public function viewAction($motId) {
+    public function viewAction($motId, Request $request) {
         $em = $this->getDoctrine()->getEntityManager();
         
         $mot = $em->getRepository('SOFFTAnglaisBundle:Mot')->find($motId);
         $user = $this->get('security.context')->getToken()->getUser();
         
         $mot->cadenas($user);
+        $em->flush();
         
-        return $this->render('SOFFTAnglaisBundle:Mot:view.html.twig', array('mot' => $mot));
+        $form = $this->createForm(new \SOFFT\AnglaisBundle\Form\MotType(), $mot);
+        
+        return $this->render('SOFFTAnglaisBundle:Mot:view.html.twig', array('form' => $form->createView(), 'mot' => $mot));
     }
 }
 
