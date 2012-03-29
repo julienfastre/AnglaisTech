@@ -31,6 +31,7 @@ security:
 
     access_control:
       - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/account, roles: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/, roles: ROLE_USER }
       
         #- { path: ^/_internal, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
