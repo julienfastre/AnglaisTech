@@ -150,7 +150,7 @@ class Mot
      *
      * @param SOFFT\AnglaisBundle\Entity\User $cadenaswho
      */
-    private function setCadenaswho(User $cadenaswho)
+    private function setCadenaswho($cadenaswho)
     {
         $this->cadenaswho = $cadenaswho;
     }
