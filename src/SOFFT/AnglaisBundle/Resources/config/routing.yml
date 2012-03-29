@@ -15,6 +15,10 @@ logout:
 SAB_create_account:
   pattern: /account/new
   defaults: { _controller: SOFFTAnglaisBundle:Security:new }
+  
+SAB_account_welcome:
+  pattern: /account/welcome/{username}
+  defaults: { _controller: SOFFTAnglaisBundle:Security:welcome }
     
 SAB_liste_mot:
   pattern: /mot/liste/{page}

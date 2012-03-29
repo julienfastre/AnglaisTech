@@ -28,12 +28,12 @@ class User implements UserInterface
     /**
      * @var string $username
      */
-    private $username;
+    private $username = '';
 
     /**
      * @var string $password
      */
-    private $password;
+    private $password = '';
 
 
     /**
