@@ -94,7 +94,7 @@ class User implements UserInterface
     }
 
     public function getSalt() {
-        return 'salt';
+        return ''; #Dans le cas d'une utilisation plaintext, il ne faut pas utiliser salt
         
     }
 }
