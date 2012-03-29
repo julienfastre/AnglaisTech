@@ -112,6 +112,11 @@ class Mot
         $this->setCadenas(new DateTime());
         $this->setCadenaswho($user);
     }
+    
+    public function resetCadenas() {
+        $this->setCadenas(NULL);
+        $this->setCadenaswho(NULL);
+    }
 
     /**
      * Set cadenas
