@@ -18,7 +18,7 @@
                  {% if mot.beingCadenas %}
                     oui
                  {% else %}
-                    non
+                    <a href="{{ path('SAB_view_mot', {'motId': mot.id } ) }}">Traduire</a>
                  {% endif %}
             </td>
         </tr>
