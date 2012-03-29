@@ -38,6 +38,13 @@
             </ul>
         </div>
         <div id="body">
+
+            {% if app.session.hasFlash('notice') %}
+                <div class="flash-notice">
+                    {{ app.session.flash('notice') }}
+                </div>
+            {% endif %}
+
             {% block body %}Rien dans le body...{% endblock %}
         </div>
     </body>
