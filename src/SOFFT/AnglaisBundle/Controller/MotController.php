@@ -40,8 +40,11 @@ class MotController extends Controller {
         
         //crée la pagination
         $mots_par_page = 3;
-        $nb_de_mots = $em->createQuery("SELECT count(m.id) FROM SOFFTAnglaisBundle:Mot m ")->getSingleResult();
-        $page = $page -1;
+        
+        $query = $em->createQuery("SELECT count(m.id) FROM SOFFTAnglaisBundle:Mot m ");
+        $nb_de_mots = $query->getSingleScalarResult();
+
+        $page = $page -1; //il faut passer dans le format "informatique" (le premier = 0)
         $div = $nb_de_mots/$mots_par_page;
         $nb_de_page =  round($div, 0);
         if (($nb_de_mots % $mots_par_page) > 0) {
@@ -56,7 +59,12 @@ class MotController extends Controller {
                 ->getQuery()
                 ->getResult();
         
-        return $this->render('SOFFTAnglaisBundle:Mot:list.html.twig', array ('list' => $list));
+        return $this->render('SOFFTAnglaisBundle:Mot:list.html.twig', array (
+            'list' => $list,
+            'page' => (int) $page +1, //il faut se réajuster au format textuel (1= première)
+            'nb_de_page' => (int) $nb_de_page
+            )
+                );
         
     }
     
