@@ -16,7 +16,7 @@
             <td> {{mot.en}} </td>
             <td> 
                  {% if mot.beingCadenas %}
-                    oui
+                    oui, par {{ mot.cadenasWho.username }}
                  {% else %}
                     <a href="{{ path('SAB_view_mot', {'motId': mot.id } ) }}">Traduire</a>
                  {% endif %}
