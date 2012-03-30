@@ -21,7 +21,7 @@ SAB_account_welcome:
   defaults: { _controller: SOFFTAnglaisBundle:Security:welcome }
     
 SAB_liste_mot:
-  pattern: /mot/liste/{page}
+  pattern: /mot/liste
   defaults: { _controller: SOFFTAnglaisBundle:Mot:list }
   
 SAB_view_mot:
