@@ -9,6 +9,7 @@ SOFFT\AnglaisBundle\Entity\User:
     username:
       type: string
       length: 255
+      unique: true
     password:
       type: string
       length: 255

@@ -39,7 +39,12 @@ class securityController extends Controller {
         
         $form = $this->createFormBuilder($user)
                 ->add('username', 'text')
-                ->add('password', 'password')
+                ->add('password', 'repeated', array(
+                    'type' => 'password',
+                    'first_name' => 'Mot de passe :',
+                    'second_name' => 'Répétez votre mot de passe',
+                    'invalid_message' => 'Les deux mots de passe ne correspondent pas'
+                ))
                 ->getForm();
         
         if($request->getMethod() == 'POST') {
