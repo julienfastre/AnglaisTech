@@ -52,6 +52,8 @@ class securityController extends Controller {
             
             if ($form->isValid()) {
                 
+                
+                
                 $user = $form->getData();
 
                 $factory = $this->get('security.encoder_factory');
