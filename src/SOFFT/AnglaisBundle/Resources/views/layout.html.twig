@@ -5,24 +5,34 @@
         {% block javascript %}
             <!-- Aucun fichier javascript ajouté par le template -->
         {% endblock %}
+            
+                    <link rel="stylesheet" media="screen" href="http://openfontlibrary.org/face/junction" rel="stylesheet" type="text/css"/> 
+
 
         <style type="text/css">
             #menu {
                 padding: 10px;
-                position: fixed;
-                top: 0; left: 30px;
+                
+                margin-bottom: 10px;
                 background-color: white;
-                box-shadow: -2px 2px 2px 4px rgba(0,0,0,0.2);
+                border: 1px solid #4444dd;
+                width: 1000px;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: right;
             }
             #menu ul {
                 list-style-type: none;
             }
             #menu ul li {
                 display: inline;
-                margin: 10px;
+                
             }
             #body {
-                margin-top: 90px;
+    
+                margin-left: auto;
+                margin-right: auto;
+                width: 1010px;
             }
 
             ul.pagination  {
@@ -34,10 +44,17 @@
                 margin-left: 5px;
                 margin-right: 5px;
             }
+            
+            *, p, ul, li, div, form, input {
+                font-family: 'Junction';
+                font-weight: normal;
+                font-style: normal;
+                }
+            
         </style>
 
         {% block css %}
-            <!-- Aucun fichier css ajouté par le template -->
+            <!-- Aucune instruction css ajouté par le template -->
         {% endblock %}
         
     </head>
@@ -54,6 +71,8 @@
                     {{ app.session.flash('notice') }}
                 </div>
             {% endif %}
+            
+            
 
             {% block body %}Rien dans le body...{% endblock %}
         </div>
