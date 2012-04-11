@@ -1,13 +1,54 @@
 {% extends 'SOFFTAnglaisBundle::layout.html.twig' %}
 
+
+{% block css %}
+
+    {{ parent() }}
+<style type="text/css">
+
+       #liste {
+           border-collapse: collapse;
+           width: 1000px;
+           margin-left: auto;
+           margin-right: auto;
+           }
+       #liste td {
+           border: thin solid #4444dd;
+           padding: 4px;
+           
+           }
+       
+       #liste col.mot {
+           width: 450px;
+           }
+           
+       #liste col.link {
+           width: 80px;
+           }
+       #liste th {
+           background-color: #4444dd;
+           color: white;
+           padding: 10px;
+           border: 1px solid white;
+       }
+</style>
+
+{% endblock %}
+
+
 {% block body %}
 <h1>Liste des mots à traduire</h1>
 
-<table>
+<table id="liste">
+    <colgroup>
+        <col id="fr" class="mot" />
+        <col id="en" class="mot" />
+        <col id="link" class="link" />
+    </colgroup>
     <thead>
         <th> Français </th>
         <th> Anglais </th>
-        <th>Cadenassé ? </th>
+        <th>&nbsp;</th>
     </thead>
     <tbody>
     {% for mot in list %}
