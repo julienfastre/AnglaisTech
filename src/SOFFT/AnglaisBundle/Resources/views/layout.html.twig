@@ -49,8 +49,15 @@
                 font-family: 'Junction';
                 font-weight: normal;
                 font-style: normal;
-                }
-            
+            }
+            input[type=password], input[type=text] {
+                border-radius: 2px;
+                border: 1px solid #4444dd;
+           }
+           
+           input[type=password]:focus, input[type=text]:focus {
+            box-shadow: 2px 2px 3px rgba(68,68,221,0.45), -2px -2px 3px rgba(68,68,221,0.45);
+           }
         </style>
 
         {% block css %}
