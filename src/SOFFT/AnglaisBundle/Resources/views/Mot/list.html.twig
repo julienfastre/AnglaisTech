@@ -35,6 +35,10 @@
 
 {% endblock %}
 
+{% block javascript%}
+<script src="{{ asset('bundles/anglais/liste.js') }}" type="text/javascript"></script>
+{% endblock %}
+
 
 {% block body %}
 <h1>Liste des mots à traduire</h1>
@@ -55,7 +59,9 @@
         <tr  >
             <td> {{mot.fr}} </td>
             <td> {{mot.en}} </td>
-            <td> 
+            <td id='{{mot.id}}' 
+                class="cadenasinfo {% if mot.beingCadenas %} cadenas {% else %} ouvert {% endif %} "
+                > 
                  {% if mot.beingCadenas %}
                     oui, par {{ mot.cadenasWho.username }}
                  {% else %}

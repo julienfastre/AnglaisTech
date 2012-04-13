@@ -140,6 +140,29 @@ class MotController extends Controller {
         return $response;
         
     }
+    
+    public function refreshCadenasAction($motId) {
+        $em = $this->getDoctrine()->getEntityManager();
+        
+        $mot = $em->getRepository('SOFFTAnglaisBundle:Mot')->find($motId);
+        
+        if ($mot == NULL) 
+        {
+            throw $this->createNotFoundException("Le mot demandé n'existe pas");
+        }
+        
+        $user = $this->get('security.context')->getToken()->getUser();
+        
+        $mot->cadenas($user);
+        $em->flush();
+        
+        $r['result'] = true;
+        
+        $jsonencoder = new JsonEncoder();
+        $response = new Response( $jsonencoder->encode($r, 'json') );
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
 }
 
 

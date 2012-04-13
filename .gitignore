@@ -1,4 +1,7 @@
 /web/bundles/
+
+!/web/bundles/anglais/liste.js
+
 /app/bootstrap*
 /app/cache/*
 /app/logs/*
