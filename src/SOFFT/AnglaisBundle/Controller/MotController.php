@@ -122,7 +122,7 @@ class MotController extends Controller {
         $date->sub(new \DateInterval(Mot::DUREE_CADENAS_INTERVAL));
         
         $q = $em->createQuery("SELECT m from SOFFTAnglaisBundle:Mot m 
-            where m.cadenas IS NOT NULL OR m.cadenas > :date");
+            where m.cadenas > :date");
         $q->setParameter('date', $date);
         
         $mots = $q->getResult();
