@@ -25,17 +25,17 @@ class Mot
     /**
      * @var string $fr
      */
-    private $fr;
+    private $fr = '';
 
     /**
      * @var string $en
      */
-    private $en;
+    private $en = '';
 
     /**
      * @var string $explication
      */
-    private $explication;
+    private $explication = ''; 
 
     /**
      * @var datetime $cadenas
@@ -55,7 +55,10 @@ class Mot
      */
     public function setFr($fr)
     {
-        $this->fr = $fr;
+        if ($fr === NULL) 
+            $this->fr = '' ;
+        else
+            $this->fr = $fr;
     }
 
     /**
@@ -75,7 +78,10 @@ class Mot
      */
     public function setEn($en)
     {
-        $this->en = $en;
+        if ($en === NULL)
+            $this->en = '';
+        else
+            $this->en = $en;
     }
 
     /**
@@ -95,7 +101,12 @@ class Mot
      */
     public function setExplication($explication)
     {
-        $this->explication = $explication;
+        if ($explication === NULL) {
+            $this->explication = '';
+        }
+        else {
+            $this->explication = $explication;
+        }
     }
 
     /**
