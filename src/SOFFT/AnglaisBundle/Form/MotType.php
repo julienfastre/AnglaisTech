@@ -10,9 +10,15 @@ class MotType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-            ->add('fr')
-            ->add('en')
-            ->add('explication')
+            ->add('fr', 'textarea', array(
+                'required' => false
+            ))
+            ->add('en', 'textarea', array(
+                'required' => false
+            ))
+            ->add('explication', 'textarea', array(
+                'required' => false
+            ))
             
         ;
     }

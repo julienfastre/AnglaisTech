@@ -8,3 +8,4 @@ SOFFT\AnglaisBundle\Entity\User:
     username:
       - NotBlank: { message: "Le nom d'utilisateur ne peut être vide"}
       - MinLength: {limit: 3, message: "Votre nom d'utilisateur doit contenir plus de trois lettres" }
+

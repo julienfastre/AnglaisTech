@@ -1,10 +1,87 @@
 {% extends 'SOFFTAnglaisBundle::layout.html.twig' %}
 
+{% block css %}
+
+    {{ parent() }}
+<style type="text/css">
+
+       #liste {
+           border-collapse: collapse;
+           width: 1000px;
+           margin-left: auto;
+           margin-right: auto;
+           }
+       #liste td {
+           border: thin solid #4444dd;
+           padding: 4px;
+           
+           }
+       
+       #liste col.mot {
+           width: 450px;
+           }
+           
+       #liste col.link {
+           width: 80px;
+           }
+       #liste th {
+           background-color: #4444dd;
+           color: white;
+           padding: 10px;
+           border: 1px solid white;
+       }
+       
+       textarea#sofft_anglaisbundle_mottype_fr, 
+       TEXTAREA#sofft_anglaisbundle_mottype_en, 
+       TEXTAREA#sofft_anglaisbundle_mottype_explication {
+           width: 100%;
+           }
+       
+       TEXTAREA#sofft_anglaisbundle_mottype_explication {
+           height: 200px;
+           }
+</style>
+
+{% endblock %}
+
 {% block body %}
 
 <form action="{{ path('SAB_view_mot', {'motId': mot.id}) }}" method="post" {{ form_enctype(form) }}>
-    {{ form_rest(form) }}
+        
+<table id="liste">
+    <colgroup>
+        <col id="fr" class="mot" />
+        <col id="en" class="mot" />
 
+    </colgroup>
+    <thead>
+        <th> Français </th>
+        <th> Anglais </th>
+ 
+    </thead>
+    <tbody>
+        <tr >
+            <td> {{form_widget(form.fr)}} </td>
+            <td> {{form_widget(form.en)}} </td>
+           
+        </tr>
+        <tr>
+            <th colspan="2">
+                Explications
+            </th>
+        </tr>
+        
+        <tr>
+            <td colspan="2">
+                {{form_widget(form.explication)}}
+            </td>
+        </tr>
+
+    </tbody>
+    
+</table>
+
+    {{form_rest(form)}}
     <input type="submit" />
 </form>
 
