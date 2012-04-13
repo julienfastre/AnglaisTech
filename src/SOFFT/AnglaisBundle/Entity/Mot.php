@@ -43,8 +43,8 @@ class Mot
      */
     private $cadenas;
     
-    const DUREE_CADENAS = 300;
-    const DUREE_CADENAS_INTERVAL = 'P5M';
+    const DUREE_CADENAS = 60;
+    const DUREE_CADENAS_INTERVAL = 'PT60S';
 
     
     public function getId()
@@ -186,8 +186,10 @@ class Mot
             return false;
         else 
         {
-            $now = new DateTime();
-            if (( $now->getTimestamp() - $this->getCadenas()->getTimeStamp()) > self::DUREE_CADENAS) 
+            $ouvertLimitBefore = new DateTime();
+            $dateInterval = new \DateInterval(self::DUREE_CADENAS_INTERVAL);
+            $ouvertLimitBefore = $ouvertLimitBefore->sub($dateInterval);
+            if ( $this->getCadenas() < $ouvertLimitBefore ) 
             {
                 return false;
             } else 
