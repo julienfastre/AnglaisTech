@@ -5,6 +5,7 @@ namespace SOFFT\AnglaisBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use SOFFT\AnglaisBundle\Entity\User;
 use \DateTime;
+use Symfony\Component\Validator\ExecutionContext;
 
 /**
  * SOFFT\AnglaisBundle\Entity\Mot
@@ -41,6 +42,9 @@ class Mot
      * @var datetime $cadenas
      */
     private $cadenas;
+    
+    const DUREE_CADENAS = 300;
+    const DUREE_CADENAS_INTERVAL = 'P5M';
 
     
     public function getId()
@@ -183,7 +187,7 @@ class Mot
         else 
         {
             $now = new DateTime();
-            if (( $now->getTimestamp() - $this->getCadenas()->getTimeStamp()) > 300) 
+            if (( $now->getTimestamp() - $this->getCadenas()->getTimeStamp()) > self::DUREE_CADENAS) 
             {
                 return false;
             } else 
@@ -193,5 +197,13 @@ class Mot
             
         }
             
+    }
+    
+    public function isValid(ExecutionContext $context){
+        if ($this->getEn() === NULL && $this->getFr() === NULL) {
+            $propertyPath = $context->getPropertyPath() . '.fr';
+            $context->setPropertyPath($propertyPath);
+            $context->addViolation('Le mot français ou anglais doit être rempli', array(), null);
+        }
     }
 }

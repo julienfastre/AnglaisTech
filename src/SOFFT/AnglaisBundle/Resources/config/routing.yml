@@ -27,3 +27,7 @@ SAB_liste_mot:
 SAB_view_mot:
   pattern: /mot/view/{motId}
   defaults: {_controller: SOFFTAnglaisBundle:Mot:view }
+  
+SAB_list_cadenas:
+  pattern: /mot/liste/cadenas.json
+  defaults: {_controller: SOFFTAnglaisBundle:Mot:listeMotCadenas }

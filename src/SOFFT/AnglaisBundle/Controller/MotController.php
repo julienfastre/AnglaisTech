@@ -6,6 +6,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use SOFFT\AnglaisBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
+use SOFFT\AnglaisBundle\Entity\Mot;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
 
 
 /**
@@ -110,6 +112,33 @@ class MotController extends Controller {
         }
         
         return $this->render('SOFFTAnglaisBundle:Mot:view.html.twig', array('form' => $form->createView(), 'mot' => $mot));
+    }
+    
+    
+    public function listeMotCadenasAction(){
+        $em = $this->getDoctrine()->getEntityManager();
+        
+        $date = new \DateTime();
+        $date->sub(new \DateInterval(Mot::DUREE_CADENAS_INTERVAL));
+        
+        $q = $em->createQuery("SELECT m from SOFFTAnglaisBundle:Mot m 
+            where m.cadenas IS NOT NULL OR m.cadenas > :date");
+        $q->setParameter('date', $date);
+        
+        $mots = $q->getResult();
+        
+        $r = array();
+        if (count($mots) > 0) {
+            foreach ($mots as $mot){
+                $r['id'] = $mot->getId();
+            }
+        }
+        
+        $jsonencoder = new JsonEncoder();
+        $response = new Response( $jsonencoder->encode($r, 'json') );
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+        
     }
 }
 
