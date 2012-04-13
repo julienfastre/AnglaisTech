@@ -130,7 +130,7 @@ class MotController extends Controller {
         $r = array();
         if (count($mots) > 0) {
             foreach ($mots as $mot){
-                $r['id'] = $mot->getId();
+                $r[] = array('id' => $mot->getId(), 'user' => $mot->getCadenasWho()->getUsername());
             }
         }
         
