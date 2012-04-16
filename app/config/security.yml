@@ -1,6 +1,6 @@
 security:
     encoders:
-        SOFFT\AnglaisBundle\Entity\User: plaintext
+        SOFFT\AnglaisBundle\Entity\User: sha512
         Symfony\Component\Security\Core\User\User: plaintext
 
     providers:
