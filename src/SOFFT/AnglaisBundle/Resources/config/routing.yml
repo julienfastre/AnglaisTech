@@ -1,5 +1,5 @@
-SOFFTAnglaisBundle_homepage:
-  pattern:  /hello/{name}
+SAB_homepage:
+  pattern: /
   defaults: { _controller: SOFFTAnglaisBundle:Default:index }
 
 login:
@@ -19,6 +19,10 @@ SAB_create_account:
 SAB_account_welcome:
   pattern: /account/welcome/{username}
   defaults: { _controller: SOFFTAnglaisBundle:Security:welcome }
+  
+SAB_create_mot:
+  pattern: /mot/create
+  defaults: { _controller: SOFFTAnglaisBundle:Mot:create }
     
 SAB_liste_mot:
   pattern: /mot/liste
