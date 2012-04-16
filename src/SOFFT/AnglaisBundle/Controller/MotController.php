@@ -41,7 +41,7 @@ class MotController extends Controller {
         
         
         //crée la pagination
-        $mots_par_page = 3;
+        $mots_par_page = 15;
         
         $query = $em->createQuery("SELECT count(m.id) FROM SOFFTAnglaisBundle:Mot m ");
         $nb_de_mots = $query->getSingleScalarResult();
