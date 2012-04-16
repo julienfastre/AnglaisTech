@@ -30,6 +30,7 @@
             }
             #menu ul li {
                 display: inline;
+                padding-left: 10px;
                 
             }
             #body {
@@ -83,6 +84,9 @@
     <body>
         <div id="menu">
             <ul>
+                
+                <li><a href="{{path('SAB_create_mot')}}">Ajouter un mot</a></li>
+                <li><a href="{{path('SAB_liste_mot')}}">Liste des mots</a></li>
                 <li><a href="{{path('logout')}}">Se déconnecter</a></li>
             </ul>
         </div>

@@ -70,6 +70,35 @@ class MotController extends Controller {
         
     }
     
+    public function createAction(Request $request) {
+        $mot = new Mot();
+        
+        $form = $this->createForm(new \SOFFT\AnglaisBundle\Form\MotType(), $mot);
+        
+        if($request->getMethod() == 'POST') {
+            $form->bindRequest($request);
+            
+            if ($form->isValid()) {
+                
+                $mot = $form->getData();
+                
+                $mot->resetCadenas();
+
+                if ($mot->getId() === NULL)
+                    $this->getDoctrine()->getEntityManager()->persist($mot);
+                $this->getDoctrine()->getEntityManager()->flush();
+                
+                $this->get('session')->setFlash('notice', 'Votre mot a été créé');
+                                
+                return $this->redirect($this->generateUrl('SAB_liste_mot'));
+            }
+        }
+        
+        
+        return $this->render('SOFFTAnglaisBundle:Mot:view.html.twig', array('form' => $form->createView(), 'mot' => $mot));
+        
+    }
+    
     public function viewAction($motId, Request $request) {
         $em = $this->getDoctrine()->getEntityManager();
         
@@ -107,7 +136,7 @@ class MotController extends Controller {
                 
                 $this->get('session')->setFlash('notice', 'Vos modifications ont été enregistrées');
                                 
-                return $this->redirect($this->generateUrl('SAB_liste_mot', array('page' => 1 ) ));
+                return $this->redirect($this->generateUrl('SAB_liste_mot'));
             }
         }
         
