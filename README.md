@@ -7,16 +7,23 @@ Pour l'installer :
 
 - Installez Symfony et les vendeurs
 - Initialisez git dans le répertoire de Symfony
-
-     #git init
+```bash
+git init
+```
 - Importez les sources : 
-     - #git remote add github git://github.com/julienfastre/AnglaisTech.git
-     - #git pull github master
+```bash
+#git remote add github git://github.com/julienfastre/AnglaisTech.git
+#git pull github master
+```
 - Adaptez la configuration à votre installation: 
-     #cp app/config/parameters.bak.ini app/config/parameters.ini
-     #vi app/config/parameters.ini
+```bash
+#cp app/config/parameters.bak.ini app/config/parameters.ini
+#vi app/config/parameters.ini
+```
 - Installez la base de donnée :
-     #php app/console doctrine:schema:create --force
+```bash
+#php app/console doctrine:schema:create --force
+```
 
 Amusez-vous ! 
 
