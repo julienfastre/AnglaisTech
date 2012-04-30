@@ -3,6 +3,8 @@
 namespace SOFFT\AnglaisBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use SOFFT\AnglaisBundle\Entity\User;
+use SOFFT\AnglaisBundle\Entity\Quizz;
 
 /**
  * QuizzRepository
@@ -12,4 +14,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class QuizzRepository extends EntityRepository
 {
+    
+    public function getQuizzesOwnedBy(User $user) {
+        $em = $this->getEntityManager();
+        return $em->createQuery("SELECT q from SOFFT\AnglaisBundle\Entity\Quizz q where q.owner = :owner")
+                ->setParameter('owner', $user)
+                ->getResult();
+    }
+    
+    
 }

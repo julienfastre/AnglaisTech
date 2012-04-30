@@ -39,3 +39,11 @@ SAB_list_cadenas:
 SAB_mot_refresh:
   pattern: /mot/refreshcadenas/{motId}
   defaults: {_controller: SOFFTAnglaisBundle:Mot:refreshCadenas }
+  
+SAB_quizz_liste:
+  pattern: /quizz/liste
+  defaults: {_controller: SOFFTAnglaisBundle:Quizz:index }
+  
+SAB_quizz_create:
+  pattern: /quizz/create
+  defaults: {_controller: SOFFTAnglaisBundle:Quizz:create }

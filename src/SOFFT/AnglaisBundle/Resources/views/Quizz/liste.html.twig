@@ -1,0 +1,37 @@
+{% extends 'SOFFTAnglaisBundle::layout.html.twig' %}
+
+{% block body %}
+
+<p><a href="{{ path('SAB_quizz_create')}}">Nouveau Quizz</a></p>
+
+<table>
+    <thead>
+        <tr>
+        <th>Date</th>
+        <th>Vos commentaires</th>
+    </tr>
+    </thead>
+
+    <tbody>
+{% if quizzes|length > 0 %}
+            {% for quizz in quizzes %}
+                <tr>
+                     <td>quizz.creationDate</td>
+                     <td>quizz.note</td>;
+                </tr>
+            
+            {%endfor%}
+{% else %}
+                <tr>
+                    
+                    <td colspan="2">Aucun Quizz trouvé</td>
+                </tr>
+                
+{% endif %}
+        </tbody>
+</table>
+
+<p><a href="{{ path('SAB_quizz_create')}}">Nouveau Quizz</a></p>
+
+
+{% endblock %}
