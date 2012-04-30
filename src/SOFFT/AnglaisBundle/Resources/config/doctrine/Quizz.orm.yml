@@ -1,0 +1,21 @@
+SOFFT\AnglaisBundle\Entity\Quizz:
+  type: entity
+  table: quizz
+  id:
+    id:
+      type: integer
+      generator: { strategy : AUTO }
+  fields:
+    creationDate:
+      type: datetime
+    note:
+      type: string
+    type:
+      type: integer
+  manyToMany:
+    mots:
+      targetEntity: Mot
+  manyToOne:
+    owner:
+      targetEntity: User
+      inversedBy: quizzes

@@ -14,7 +14,7 @@ class User implements UserInterface
      * @var integer $id
      */
     private $id;
-
+    
 
     /**
      * Get id
@@ -65,7 +65,7 @@ class User implements UserInterface
     {
         $this->password = $password;
     }
-
+ 
     /**
      * Get password
      *

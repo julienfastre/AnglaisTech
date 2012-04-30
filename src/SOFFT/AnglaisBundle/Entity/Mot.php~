@@ -3,6 +3,9 @@
 namespace SOFFT\AnglaisBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use SOFFT\AnglaisBundle\Entity\User;
+use \DateTime;
+use Symfony\Component\Validator\ExecutionContext;
 
 /**
  * SOFFT\AnglaisBundle\Entity\Mot
@@ -14,36 +17,40 @@ class Mot
      */
     private $id;
 
-
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+
     /**
      * @var string $fr
      */
-    private $fr;
+    private $fr = '';
 
     /**
      * @var string $en
      */
-    private $en;
+    private $en = '';
 
     /**
      * @var string $explication
      */
-    private $explication;
+    private $explication = ''; 
 
     /**
      * @var datetime $cadenas
      */
     private $cadenas;
+    
+    const DUREE_CADENAS = 60;
+    const DUREE_CADENAS_INTERVAL = 'PT60S';
 
+    
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set fr
@@ -52,7 +59,10 @@ class Mot
      */
     public function setFr($fr)
     {
-        $this->fr = $fr;
+        if ($fr === NULL) 
+            $this->fr = '' ;
+        else
+            $this->fr = $fr;
     }
 
     /**
@@ -72,7 +82,10 @@ class Mot
      */
     public function setEn($en)
     {
-        $this->en = $en;
+        if ($en === NULL)
+            $this->en = '';
+        else
+            $this->en = $en;
     }
 
     /**
@@ -92,7 +105,12 @@ class Mot
      */
     public function setExplication($explication)
     {
-        $this->explication = $explication;
+        if ($explication === NULL) {
+            $this->explication = '';
+        }
+        else {
+            $this->explication = $explication;
+        }
     }
 
     /**
@@ -104,13 +122,23 @@ class Mot
     {
         return $this->explication;
     }
+    
+    public function cadenas(User $user ) {
+        $this->setCadenas(new DateTime());
+        $this->setCadenaswho($user);
+    }
+    
+    public function resetCadenas() {
+        $this->setCadenas(NULL);
+        $this->setCadenaswho(NULL);
+    }
 
     /**
      * Set cadenas
      *
      * @param datetime $cadenas
      */
-    public function setCadenas($cadenas)
+    private function setCadenas($cadenas)
     {
         $this->cadenas = $cadenas;
     }
@@ -126,4 +154,58 @@ class Mot
     }
     
     
+    /**
+     * @var SOFFT\AnglaisBundle\Entity\User
+     */
+    private $cadenaswho;
+
+
+    /**
+     * Set cadenaswho
+     *
+     * @param SOFFT\AnglaisBundle\Entity\User $cadenaswho
+     */
+    private function setCadenaswho($cadenaswho)
+    {
+        $this->cadenaswho = $cadenaswho;
+    }
+
+    /**
+     * Get cadenaswho
+     *
+     * @return SOFFT\AnglaisBundle\Entity\User 
+     */
+    public function getCadenaswho()
+    {
+        return $this->cadenaswho;
+    }
+    
+    public function isBeingCadenas() {
+        
+        if ($this->getCadenas() === NULL )
+            return false;
+        else 
+        {
+            $ouvertLimitBefore = new DateTime();
+            $dateInterval = new \DateInterval(self::DUREE_CADENAS_INTERVAL);
+            $ouvertLimitBefore = $ouvertLimitBefore->sub($dateInterval);
+            if ( $this->getCadenas() < $ouvertLimitBefore ) 
+            {
+                return false;
+            } else 
+            {
+                return true;
+            }
+            
+        }
+            
+    }
+    
+    public function isValid(ExecutionContext $context){
+        if ($this->getEn() === NULL && $this->getFr() === NULL) {
+            $propertyPath = $context->getPropertyPath() . '.fr';
+            $context->setPropertyPath($propertyPath);
+            $context->addViolation('Le mot français ou anglais doit être rempli', array(), null);
+        }
+    }
 }

@@ -14,7 +14,7 @@ class User implements UserInterface
      * @var integer $id
      */
     private $id;
-
+    
 
     /**
      * Get id
@@ -28,12 +28,12 @@ class User implements UserInterface
     /**
      * @var string $username
      */
-    private $username;
+    private $username = '';
 
     /**
      * @var string $password
      */
-    private $password;
+    private $password = '';
 
 
     /**
@@ -65,7 +65,7 @@ class User implements UserInterface
     {
         $this->password = $password;
     }
-
+ 
     /**
      * Get password
      *
@@ -89,12 +89,12 @@ class User implements UserInterface
     }
 
     public function getRoles() {
-        return 'ROLE_ADMIN';
+        return array('ROLE_USER');
         
     }
 
     public function getSalt() {
-        return 'salt';
+        return ''; #Dans le cas d'une utilisation plaintext, il ne faut pas utiliser salt
         
     }
 }
