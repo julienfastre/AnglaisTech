@@ -1,6 +1,7 @@
 SOFFT\AnglaisBundle\Entity\Quizz:
   type: entity
   table: quizz
+  repositoryClass: SOFFT\AnglaisBundle\Entity\QuizzRepository
   id:
     id:
       type: integer
