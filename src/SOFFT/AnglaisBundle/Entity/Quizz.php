@@ -22,7 +22,7 @@ class Quizz
     /**
      * @var string $note
      */
-    private $note;
+    private $note = '';
 
     /**
      * @var SOFFT\AnglaisBundle\Entity\User

@@ -16,8 +16,8 @@
 {% if quizzes|length > 0 %}
             {% for quizz in quizzes %}
                 <tr>
-                     <td>quizz.creationDate</td>
-                     <td>quizz.note</td>;
+                     <td>{{quizz.creationDate|date('m/d/Y H:i:s')}}</td>
+                     <td>{{quizz.note}}</td>;
                 </tr>
             
             {%endfor%}
