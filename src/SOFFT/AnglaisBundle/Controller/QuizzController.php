@@ -58,5 +58,41 @@ class QuizzController extends Controller {
         return $this->redirect($this->generateUrl('SAB_quizz_liste'));
         
     }
+    
+    public function playAction($quizzId) {
+        $em = $this->getDoctrine()->getEntityManager();
+        $user = $this->get('security.context')->getToken()->getUser();
+        
+        /**
+         *@var SOFFT\AnglaisBundle\Entity\Quizz
+         */
+        $quizz = $em->getRepository('SOFFTAnglaisBundle:Quizz')->find($quizzId);
+        
+        //si le quizz n'existe pas...
+        if($quizz == null) {
+            throw $this->createNotFoundException("Le Quizz n'a pas été trouvé");
+        }
+        
+        //vérifie que le quizz est autorisé...
+        if ($quizz->getOwner()->getId() != $user->getId()) {
+            throw new \Exception("Vous n'êtes pas autorisé à jouer à ce quizz");
+        }
+        
+        switch ($quizz->getType()) {
+            case Quizz::DRAG_AND_DROP1 : 
+                return $this->render('SOFFTAnglaisBundle:Quizz:play_drag_and_drop_1.html.twig', array(
+                    'user' => $user,
+                    'quizz' => $quizz
+                ));
+                break;
+            default: 
+                throw $this->createNotFoundException("Le type de quizz n'a pas été associé à une vue");
+                
+        }
+        
+            
+        
+        
+    }
 }
 

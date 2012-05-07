@@ -17,7 +17,7 @@
             {% for quizz in quizzes %}
                 <tr>
                      <td>{{quizz.creationDate|date('m/d/Y H:i:s')}}</td>
-                     <td>{{quizz.note}}</td>;
+                     <td><a href="{{ path('SAB_quizz_play', {'quizzId' : quizz.id }) }}">Jouer !</a></td>;
                 </tr>
             
             {%endfor%}

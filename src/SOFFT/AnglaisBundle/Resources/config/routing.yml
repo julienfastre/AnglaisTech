@@ -47,3 +47,7 @@ SAB_quizz_liste:
 SAB_quizz_create:
   pattern: /quizz/create
   defaults: {_controller: SOFFTAnglaisBundle:Quizz:create }
+  
+SAB_quizz_play:
+  pattern: /quizz/play/{quizzId}
+  defaults: {_controller: SOFFTAnglaisBundle:Quizz:play }
