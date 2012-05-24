@@ -1,8 +1,63 @@
 {% extends 'SOFFTAnglaisBundle::layout.html.twig' %}
 
+{% block css %}
+
+
+<link href="{{ asset('css/960.css')}}" media="screen" rel="stylesheet" type="text/css" />
+<link href="{{ asset('css/960_12_col.css')}}" media="screen" rel="stylesheet" type="text/css" />
+<link href="{{ asset('css/style.css')}}" media="screen" rel="stylesheet" type="text/css" />
+
+{% endblock %}
+
+{% block javascript %}
+
+<script type="text/javascript" src="{{ asset('js/jquery-1.7.1.js')}}"></script>
+<script src="{{ asset('js/script.js')}}"></script>
+
+        
+{% endblock %}
+
 
 {% block body %}
 
-oui ! 
+<button class="verification_button">
 
+Vérifier
+
+</button>
+
+<div class="container_12">
+    <div id="liste_metiers" class="grid_3 alpha zone_drop">
+
+        {% for m in quizz.mots %}
+        
+        <div class="metier" id="{{m.id}}" match_a="{{m.id}}" onDragStart="javascript:drag(this, event);" draggable="true">
+            {{m.en}}
+        </div>
+        
+        
+        {% endfor %}
+        
+        
+    </div>
+        
+        <div id="liste_description" class="grid_9">
+            {% for m in words_shuffled %}
+                <div class="description grid_4 "  >
+                    <div class="zone_drop zone_verif" id="description_{{m.id}}" match_q="{{m.id}}"></div>
+                    <p>{{m.fr}}</p>
+                    
+                    {% if m.explication != '' %}
+                        <div class="explication_mot">
+                            <p>{{m.explication}}</p>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            
+        
+        
+        
+        </div>
+</div>
 {% endblock %}

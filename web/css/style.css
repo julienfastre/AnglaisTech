@@ -1,0 +1,138 @@
+@import url(http://fonts.googleapis.com/css?family=Karla:700,400,400italic,700italic|Fredoka+One);*/
+
+
+
+
+
+
+*, div, p, ul, li {
+	font-family: 'Karla', sans-serif;
+}
+
+
+
+
+#liste_metiers {
+	overflow-y: scroll;
+	min-height: 120px;
+	height: 700px;
+}
+
+#liste_description {
+	overflow-y: scroll;
+	height: 700px;
+}
+
+#liste_description p,
+#liste_metiers p,
+#liste_metiers
+{
+    text-align: center;
+}
+
+#liste_description div.explication p,
+{
+    text-align: left;
+}
+
+.metier {
+	background-color: #99E196;
+	padding: 4px 4px;
+	margin: 10px 15px;
+	min-height: 55px;
+	width: 180px;
+	box-shadow: 0 0 5px #888;
+	border-radius: 15px;
+	
+}
+
+.metier p {
+	text-align:center;
+	font-family: 'Fredoka One', cursive;
+}
+
+.is_dragged {
+	opacity: 0.6;
+}
+
+
+*[draggable=true] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  cursor: move;
+}
+
+
+.zone_verif {
+	height: 100px; 
+	width: 220px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+
+}
+
+.error {
+	background-color: red;
+}
+
+.correct {
+	background-color: #30FA29;
+}
+
+.zone_drop {
+	border: 5px dashed black;
+
+}
+
+.zone_drop div {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.zone_drop div p {
+	text-align: center;
+}
+
+.drag_is_over {
+	border: 5px dashed red;
+	background-color: #ccc;
+}
+
+.description {
+	background-color: #C0EFE8;
+	margin: 10px;
+	padding: 10px;
+	box-shadow: 0 0 5px #888;
+	border-radius: 15px;
+}
+
+.description p {
+	text-align: justify;	
+}
+
+.verification_button {
+	
+	width: 100%;
+	
+	text-align: center;
+	padding: 10px;
+        margin: 15px;
+        
+	
+}
+
+#verification_button:hover {
+	background-image: url('buttoncheck_orange.svg');
+	background-size: 100% 100%;
+}
+
+#verification_button div {
+	top: 40px; position: relative; font-size: x-large; text-align: center;
+
+}
+#verification_button:hover div p{
+	font-weight: bold;
+	color: white;
+}

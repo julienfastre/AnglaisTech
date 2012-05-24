@@ -80,18 +80,25 @@ class QuizzController extends Controller {
         
         switch ($quizz->getType()) {
             case Quizz::DRAG_AND_DROP1 : 
+                $ws = $quizz->getMots();
+                $words_shuffled = array();
+                foreach ($ws as $m)
+                {
+                    $words_shuffled[] =  $m;
+                }
+                shuffle($words_shuffled);
+                
                 return $this->render('SOFFTAnglaisBundle:Quizz:play_drag_and_drop_1.html.twig', array(
                     'user' => $user,
-                    'quizz' => $quizz
+                    'quizz' => $quizz,
+                    'words_shuffled' => $words_shuffled
                 ));
                 break;
             default: 
                 throw $this->createNotFoundException("Le type de quizz n'a pas été associé à une vue");
                 
         }
-        
-            
-        
+ 
         
     }
 }
