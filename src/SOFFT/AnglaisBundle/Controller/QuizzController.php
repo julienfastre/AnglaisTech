@@ -55,7 +55,7 @@ class QuizzController extends Controller {
         $em->persist($q);
         $em->flush();
         
-        return $this->redirect($this->generateUrl('SAB_quizz_liste'));
+        return $this->redirect($this->generateUrl('SAB_quizz_play', array('quizzId' => $q->getId())));
         
     }
     
