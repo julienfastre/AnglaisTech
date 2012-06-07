@@ -66,6 +66,6 @@
     git=http://github.com/doctrine/migrations.git
 
 [DoctrineMigrationsBundle]
-    git=http://github.com/symfony/DoctrineMigrationsBundle.git
+    git=http://github.com/doctrine/DoctrineMigrationsBundle.git
     target=/bundles/Symfony/Bundle/DoctrineMigrationsBundle
     version=origin/2.0
