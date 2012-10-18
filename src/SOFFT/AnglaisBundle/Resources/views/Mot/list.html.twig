@@ -63,7 +63,7 @@
                 class="cadenasinfo {% if mot.beingCadenas %} cadenas {% else %} ouvert {% endif %} "
                 > 
                  {% if mot.beingCadenas %}
-                    oui, par {{ mot.cadenasWho.username }}
+                    en cours de modification par {{ mot.cadenasWho.username }}
                  {% else %}
                     <a href="{{ path('SAB_view_mot', {'motId': mot.id } ) }}">Traduire</a>
                  {% endif %}
@@ -76,6 +76,8 @@
 
 
 <!-- Pagination -->
+
+<p>Pages</p>
 
 <ul class="pagination">
  {% if page > 1 %}
