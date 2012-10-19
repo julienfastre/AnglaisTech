@@ -56,6 +56,8 @@
 {% block body %}
 
 <form action="#" method="post" {{ form_enctype(form) }}>
+    
+    {{form_errors(form) }}
         
 <table id="liste">
     <colgroup>
