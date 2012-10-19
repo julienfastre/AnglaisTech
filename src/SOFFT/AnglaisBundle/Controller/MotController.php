@@ -55,7 +55,7 @@ class MotController extends Controller {
         
         $list = $em->getRepository('SOFFTAnglaisBundle:Mot')
                 ->createQueryBuilder('m')
-                ->orderBy('m.en', 'ASC')->orderBy('m.fr', 'ASC')
+                ->orderBy('m.fr', 'ASC')->orderBy('m.en', 'ASC')
                 ->setFirstResult($page * $mots_par_page)
                 ->setMaxResults($mots_par_page)
                 ->getQuery()
