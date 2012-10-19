@@ -45,20 +45,20 @@
 
 <table id="liste">
     <colgroup>
-        <col id="fr" class="mot" />
         <col id="en" class="mot" />
+        <col id="fr" class="mot" />
         <col id="link" class="link" />
     </colgroup>
     <thead>
-        <th> Français </th>
         <th> Anglais </th>
+        <th> Français </th>
         <th>&nbsp;</th>
     </thead>
     <tbody>
     {% for mot in list %}
         <tr  >
-            <td> {{mot.fr}} </td>
             <td> {{mot.en}} </td>
+            <td> {{mot.fr}} </td>
             <td id='{{mot.id}}' 
                 class="cadenasinfo {% if mot.beingCadenas %} cadenas {% else %} ouvert {% endif %} "
                 > 
