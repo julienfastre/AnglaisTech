@@ -18,7 +18,7 @@ use Symfony\Component\Serializer\Encoder\JsonEncoder;
 class MotController extends Controller {
     
     public function listAction(Request $request) {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         
         //récupère la page courante
         $page = $request->get('page', NULL);
@@ -85,10 +85,10 @@ class MotController extends Controller {
                 $mot->resetCadenas();
 
                 if ($mot->getId() === NULL)
-                    $this->getDoctrine()->getEntityManager()->persist($mot);
-                $this->getDoctrine()->getEntityManager()->flush();
+                    $this->getDoctrine()->getManager()->persist($mot);
+                $this->getDoctrine()->getManager()->flush();
                 
-                $this->get('session')->setFlash('notice', 'Votre mot a été créé');
+                $this->get('session')->getFlashBag()->set('notice', 'Votre mot a été créé');
                                 
                 return $this->redirect($this->generateUrl('SAB_liste_mot'));
             }
@@ -100,7 +100,7 @@ class MotController extends Controller {
     }
     
     public function viewAction($motId, Request $request) {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         
         $mot = $em->getRepository('SOFFTAnglaisBundle:Mot')->find($motId);
         
@@ -131,10 +131,10 @@ class MotController extends Controller {
                 $mot->resetCadenas();
 
                 if ($mot->getId() === NULL)
-                    $this->getDoctrine()->getEntityManager()->persist($user);
-                $this->getDoctrine()->getEntityManager()->flush();
+                    $this->getDoctrine()->getManager()->persist($user);
+                $this->getDoctrine()->getManager()->flush();
                 
-                $this->get('session')->setFlash('notice', 'Vos modifications ont été enregistrées');
+                $this->get('session')->getFlashBag()->set('notice', 'Vos modifications ont été enregistrées');
                                 
                 return $this->redirect($this->generateUrl('SAB_liste_mot'));
             }
@@ -145,7 +145,7 @@ class MotController extends Controller {
     
     
     public function listeMotCadenasAction(){
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         
         $date = new \DateTime();
         $date->sub(new \DateInterval(Mot::DUREE_CADENAS_INTERVAL));
@@ -171,7 +171,7 @@ class MotController extends Controller {
     }
     
     public function refreshCadenasAction($motId) {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         
         $mot = $em->getRepository('SOFFTAnglaisBundle:Mot')->find($motId);
         

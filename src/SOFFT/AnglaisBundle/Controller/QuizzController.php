@@ -32,7 +32,7 @@ class QuizzController extends Controller {
     }
     
     public function createAction() {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         
         $nb = 10;
         
@@ -60,7 +60,7 @@ class QuizzController extends Controller {
     }
     
     public function playAction($quizzId) {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $user = $this->get('security.context')->getToken()->getUser();
         
         /**

@@ -61,8 +61,8 @@ class securityController extends Controller {
                 $encoder = $factory->getEncoder($user);
                 $password = $encoder->encodePassword($user->getPassword(), $user->getSalt());
                 $user->setPassword($password);
-                $this->getDoctrine()->getEntityManager()->persist($user);
-                $this->getDoctrine()->getEntityManager()->flush();
+                $this->getDoctrine()->getManager()->persist($user);
+                $this->getDoctrine()->getManager()->flush();
                                 
                 return $this->redirect($this->generateUrl('SAB_account_welcome', array('username' => $user->getUsername() ) ));
             }
