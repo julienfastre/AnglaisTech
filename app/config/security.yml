@@ -5,12 +5,14 @@ security:
 
     providers:
       chain_provider:
-        providers: [in_memory, user_db]
+        chain:
+           providers: [in_memory]
       in_memory: 
-        users:
-          admin: {password: %admin_password%, roles: [ROLE_USER, ROLE_ADMIN]}
-      user_db:
-        entity: { class: SOFFT\AnglaisBundle\Entity\User, property: username }
+        memory:
+          users:
+            admin: {password: %admin_password%, roles: [ROLE_USER, ROLE_ADMIN]}
+#          user_db:
+#            entity: { class: SOFFT\AnglaisBundle\Entity\User, property: username }
 
     firewalls:
       dev:
