@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             //new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new SOFFT\AnglaisBundle\SOFFTAnglaisBundle(),
             //new Symfony\Bundle\DoctrineMigrationsBundle\DoctrineMigrationsBundle(),
+            new CL\PersonaUserBundle\CLPersonaUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

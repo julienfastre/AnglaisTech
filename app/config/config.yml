@@ -26,6 +26,7 @@ assetic:
     debug:          %kernel.debug%
     use_controller: false
     # java: /usr/bin/java
+    bundles: ['CLPersonaUserBundle' ]
     filters:
         cssrewrite: ~
         # closure:
@@ -59,3 +60,5 @@ swiftmailer:
 #jms_security_extra:
 #    secure_controllers:  true
 #    secure_all_services: false
+cl_persona_user:
+    route_not_existing_user: register

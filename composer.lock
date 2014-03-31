@@ -3,8 +3,53 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "d78e5f6de885c69379c6fea370782701",
+    "hash": "4e8498076ccf32a6824d1b030b4b0a26",
     "packages": [
+        {
+            "name": "champs-libres/persona-user-bundle",
+            "version": "dev-master",
+            "target-dir": "CL/PersonaUserBundle",
+            "source": {
+                "type": "git",
+                "url": "git://git.champs-libres.coop/CLPersonaUserBundle",
+                "reference": "aceeb1101bad47f8aa5641635b02f5aceffe6f47"
+            },
+            "require": {
+                "php": ">=5.4",
+                "symfony/framework-bundle": "~2.3",
+                "symfony/security-bundle": "~2.3"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "CL\\PersonaUserBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Marc Ducobu",
+                    "email": "marc.ducobu@champs-libres.coop"
+                },
+                {
+                    "name": "Julien Fastré",
+                    "email": "julien.fastre@champs-libres.coop"
+                }
+            ],
+            "description": "This bundle brings authentication with the amazing [Persona system](https://www.mozilla.org/en-US/persona/) into symfony projects.  This bundle may be used by itself: you do not need to use another bundle. You may create users 'on the fly': they will simply click the 'login or register' button and will have (if you need it) a form.",
+            "homepage": "https://redmine.champs-libres.coop/projects/clpersonauserbundle",
+            "keywords": [
+                "BrowserID",
+                "Persona",
+                "User management",
+                "mozilla",
+                "user"
+            ],
+            "time": "2014-03-31 11:59:42"
+        },
         {
             "name": "doctrine/annotations",
             "version": "v1.1.2",
@@ -1568,9 +1613,9 @@
 
     ],
     "minimum-stability": "stable",
-    "stability-flags": [
-
-    ],
+    "stability-flags": {
+        "champs-libres/persona-user-bundle": 20
+    },
     "platform": {
         "php": ">=5.3.3"
     },
