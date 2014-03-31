@@ -13,3 +13,6 @@ SOFFT\AnglaisBundle\Entity\User:
     password:
       type: string
       length: 255
+    personaId:
+      type: string
+      length: 255

@@ -4,15 +4,8 @@ security:
         Symfony\Component\Security\Core\User\User: plaintext
 
     providers:
-      chain_provider:
-        chain:
-           providers: [in_memory]
-      in_memory: 
-        memory:
-          users:
-            admin: {password: %admin_password%, roles: [ROLE_USER, ROLE_ADMIN]}
-#          user_db:
-#            entity: { class: SOFFT\AnglaisBundle\Entity\User, property: username }
+      persona:
+        id: user_provider
 
     firewalls:
       dev:
@@ -34,6 +27,6 @@ security:
     access_control:
       - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/account, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-      - { path: ^/, roles: ROLE_USER }
+      #- { path: ^/, roles: ROLE_USER }
       
         #- { path: ^/_internal, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }

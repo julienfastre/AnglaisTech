@@ -34,6 +34,8 @@ class User implements UserInterface
      * @var string $password
      */
     private $password = '';
+    
+    private $personaId = '';
 
 
     /**
