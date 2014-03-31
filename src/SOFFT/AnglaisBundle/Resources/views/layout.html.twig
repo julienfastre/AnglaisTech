@@ -92,11 +92,11 @@
         </div>
         <div id="body">
 
-            {% if app.session.hasFlash('notice') %}
+            {% for message in app.session.flashbag.get('notice') %}
                 <div class="flash-notice">
-                    {{ app.session.flash('notice') }}
+                    {{ message }}
                 </div>
-            {% endif %}
+            {% endfor %}
             
             
 
