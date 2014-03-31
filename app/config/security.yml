@@ -4,7 +4,7 @@ security:
         Symfony\Component\Security\Core\User\User: plaintext
 
     providers:
-      persona:
+      persona_provider:
         id: user_provider
 
     firewalls:
@@ -14,19 +14,19 @@ security:
 
       secured_area:
         pattern: ^/
+        provider: persona_provider
+        persona: true
+        anonymous: ~
         form_login:
-          check_path: /login_check
           login_path: /login
         logout:
-          path:   /logout
-          target: /login
-        anonymous: ~
+          path: /persona/logout
           #http_basic: ~
           #    realm: "Secured Demo Area"
 
     access_control:
       - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-      - { path: ^/account, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-      #- { path: ^/, roles: ROLE_USER }
+      - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    #  - { path: ^/, roles: [ROLE_USER] }
       
         #- { path: ^/_internal, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }

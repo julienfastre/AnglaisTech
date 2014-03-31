@@ -1,52 +1,11 @@
-{% extends 'SOFFTAnglaisBundle::layout.html.twig' %}
+{% extends "SOFFTAnglaisBundle::layout.html.twig" %}
 
-{% block css %}
-
-    {{ parent() }}
-<style type="text/css">
-
-       
-           
-       form {
-           width: 50%;
-           float: left;
-           margin: 10px;
-           border-right: 1px solid #4444dd;
-           padding: 10px;
-           }
-       
-</style>
-
-{% endblock %}
-
-
-
+{% block persona%}{% endblock persona %}
 
 {% block body %}
-
-{% if error %}
-    <div>{{ error.message }}</div>
-{% endif %}
-
-<form action="{{ path('login_check') }}" method="post">
-    <label for="_username">Nom d'utilisateur : </label><br/>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" />
-
+ 
+    <h1>Merci de vous authentifier !</h1>
     
-    <br/><br/>
-    <label for="_password">Mot de passe :</label><br/>
-    <input type="password" id="password" name="_password" />
-
-    {#
-        If you want to control the URL the user is redirected to on success (more details below)
-        <input type="hidden" name="_target_path" value="/account" />
-    #}
-    <br/><br/>
-    <button type="submit">Se connecter</button>
-</form>
+    <p> {{ persona_login_button() }} </p>
     
-    <div id="create_account">
-        <p>C'est votre première visite sur ce site ?</p>
-        <p><a href="{{ path('SAB_create_account') }}">Créer un compte</a></p>
-    </div>
-{% endblock %}
+{% endblock body %}

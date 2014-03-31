@@ -12,7 +12,7 @@
             "source": {
                 "type": "git",
                 "url": "git://git.champs-libres.coop/CLPersonaUserBundle",
-                "reference": "aceeb1101bad47f8aa5641635b02f5aceffe6f47"
+                "reference": "d28da20e9affe6174e85d6860b3f4a5bce295509"
             },
             "require": {
                 "php": ">=5.4",
@@ -48,7 +48,7 @@
                 "mozilla",
                 "user"
             ],
-            "time": "2014-03-31 11:59:42"
+            "time": "2014-03-31 13:19:29"
         },
         {
             "name": "doctrine/annotations",

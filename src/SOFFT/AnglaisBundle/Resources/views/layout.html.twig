@@ -3,12 +3,32 @@
     <head>
         <title>SOFFT Anglais Technique | {% block title %}Titre par défaut{% endblock %} </title>
         
-        <script src="{{ asset('bundles/anglais/jquery-1.7.2.min.js') }}" type="text/javascript"></script>
+        {# <script src="{{ asset('bundles/anglais/jquery-1.7.2.min.js') }}" type="text/javascript"></script> #}
         
         {% block javascript %}
         
             <!-- Aucun fichier javascript ajouté par le template -->
         {% endblock %}
+        
+        
+                <!-- for the layout of buttons -->
+
+        {% stylesheets '@CLPersonaUserBundle/Resources/public/css/*' filter='cssrewrite' %}
+
+        <link rel="stylesheet" href="{{ asset_url }}" />
+
+        {% endstylesheets %}
+
+        
+
+        <!-- you must add jquery somwhere in the page, or use the 1.11 version provided with the script -->
+
+        {% javascripts '@CLPersonaUserBundle/Resources/public/js/jquery-1.11.0.js' %}
+
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+
+        {% endjavascripts %}
+
             
                     <link rel="stylesheet" media="screen" href="http://openfontlibrary.org/face/junction" rel="stylesheet" type="text/css"/> 
 
@@ -87,8 +107,19 @@
                 <li><a href="{{path('SAB_quizz_liste') }}">Quizzes</a></li>
                 <li><a href="{{path('SAB_create_mot')}}">Ajouter un mot</a></li>
                 <li><a href="{{path('SAB_liste_mot')}}">Liste des mots</a></li>
-                <li><a href="{{path('logout')}}">Se déconnecter</a></li>
-            </ul>
+                {% block persona %} {# this block is resetted on persona action, to
+avoid the use of a "persona button" where not appropriate #}
+        {% if is_granted('IS_AUTHENTICATED_FULLY') or is_granted('ROLE_USER') %}
+        
+        <li>Bienvenue, {{ app.user.username }} | 
+            {{ persona_logout_button() }} {% for role in app.user.roles%} {{ role }} {% endfor %}</li>
+        
+        {% else %}
+        
+        <li>{{ persona_login_button() }}</li>
+        
+        {% endif %} 
+        {% endblock persona %}
         </div>
         <div id="body">
 
@@ -102,5 +133,27 @@
 
             {% block body %}Rien dans le body...{% endblock %}
         </div>
+
+
+        <script type="text/javascript">
+
+            var personaLoginCheck = '{{ path('cl_persona_user.login_check') }}';
+
+            var personaLogout = '{{ path('cl_persona_user.logout') }}';
+
+        </script>
+
+        
+
+        <script src="https://login.persona.org/include.js"></script>
+
+        
+
+        {% javascripts '@CLPersonaUserBundle/Resources/public/js/persona_auth.js' %}
+
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+
+        {% endjavascripts %}
+
     </body>
 </html>

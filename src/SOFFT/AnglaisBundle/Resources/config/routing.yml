@@ -3,18 +3,16 @@ SAB_homepage:
   defaults: { _controller: SOFFTAnglaisBundle:Default:index }
   
 register:
-    pattern: /
+    pattern: /register
     defaults: {_controller: SOFFTAnglaisBundle:Security:register }
-
+    
 login:
-  pattern: /login
-  defaults: {_controller: SOFFTAnglaisBundle:Security:login }
-
-login_check:
-  pattern: /login_check
+    pattern: /login
+    defaults: {_controller: SOFFTAnglaisBundle:Security:login }
   
 logout:
   pattern: /logout
+  defaults: { _controller: SOFFTAnglaisBundle:Security:logout }
   
 SAB_create_account:
   pattern: /account/new

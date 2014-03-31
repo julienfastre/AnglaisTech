@@ -29,10 +29,10 @@ class UserProvider implements PersonaUserProviderInterface {
     
     public function loadUserByPersonaId($personaId) {
         $user = $this->em->getRepository('SOFFTAnglaisBundle:User')
-                ->findBy(array('personaId' => $personaId));
+                ->findOneBy(array('personaId' => $personaId));
         
         if ($user === null) {
-            throw new PersonaIdNotExistingException($personaId);
+            throw new UsernameNotFoundException($personaId);
         }
         
         

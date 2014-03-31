@@ -3,12 +3,12 @@
 namespace SOFFT\AnglaisBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
+use CL\PersonaUserBundle\Entity\PersonaUserInterface;
 
 /**
  * SOFFT\AnglaisBundle\Entity\User
  */
-class User implements UserInterface
+class User implements PersonaUserInterface
 {
     /**
      * @var integer $id
@@ -99,4 +99,14 @@ class User implements UserInterface
         return ''; #Dans le cas d'une utilisation plaintext, il ne faut pas utiliser salt
         
     }
+    
+    public function getPersonaId() {
+        return $this->personaId;
+    }
+    
+    public function setPersonaId($personaId) {
+        $this->personaId = $personaId;
+    }
+    
+    
 }

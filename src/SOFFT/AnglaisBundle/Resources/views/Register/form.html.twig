@@ -1,0 +1,20 @@
+{% extends "SOFFTAnglaisBundle::layout.html.twig" %}
+
+{% block persona%}{% endblock persona %}
+
+{% block body %}
+
+    <h1>Choisissez le nom qui s'affichera auprès de vos collègues</h1>
+
+    {{ form_start(form) }}
+    
+    {{ form_errors(form) }}
+    
+    {{ form_widget(form.username, {'label' : 'Votre nom'}) }}
+    
+    
+    <button type="submit">Choisir !</button>
+    
+    {{ form_end(form) }}
+    
+{% endblock body %}

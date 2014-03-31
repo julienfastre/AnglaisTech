@@ -1,6 +1,11 @@
 SOFFTAnglaisBundle:
     resource: "@SOFFTAnglaisBundle/Resources/config/routing.yml"
     prefix:   /
+    
+    
+PersonaUserBundle:
+    resource: "@CLPersonaUserBundle/Resources/config/routing.yml"
+    
 
 # Internal routing configuration to handle ESI
 #_internal:

@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
 use SOFFT\AnglaisBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
+use CL\PersonaUserBundle\CLPersonaUserBundle;
+use SOFFT\AnglaisBundle\Form\UserType;
 
 /**
  * Description of securityController
@@ -16,22 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
 class securityController extends Controller {
     
     public function loginAction() {
-        $request = $this->getRequest();
-        $session = $request->getSession();
-
-        // get the login error if there is one
-        if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
-            $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
-        } else {
-            $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
-            $session->remove(SecurityContext::AUTHENTICATION_ERROR);
-        }
-
-        return $this->render('SOFFTAnglaisBundle:Security:login.html.twig', array(
-            // last username entered by the user
-            'last_username' => $session->get(SecurityContext::LAST_USERNAME),
-            'error'         => $error,
-        ));
+        return $this->render('SOFFTAnglaisBundle:Security:login.html.twig');
     }
     
     public function newAction(Request $request) {
@@ -75,6 +62,64 @@ class securityController extends Controller {
     
     public function welcomeAction($username) {
         return $this->render('SOFFTAnglaisBundle:Security:welcome.html.twig', array('username' => $username));
+    }
+    
+    public function registerAction(Request $request) {
+        $emailRecorded = $this->get('session')
+                ->get(CLPersonaUserBundle::KEY_EMAIL_SESSION, null);
+
+        
+
+        if ($emailRecorded === NULL) {
+            $response = new Response("You must authenticate with persona first!");
+            $response->setStatusCode(Response::HTTP_NOT_ACCEPTABLE);
+            return $response;
+        }
+
+        
+
+        $user = new User();
+        $user->setPersonaId($emailRecorded);
+        
+
+        
+
+        $form = $this->createForm(new UserType(), $user);
+
+        if ($request->getMethod() === 'POST') {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+
+                
+
+                #Authenticate the user immediatly
+
+                $this->get('cl_persona_user.manual_login')
+                      ->authenticate($user);
+                
+                $this->get('session')->getFlashBag()->set('notice', 'Bienvenue, '.
+                        $user->getUsername());
+                
+                return $this->redirect(
+                      $this->generateUrl('SAB_homepage'));
+
+            } 
+
+        }
+
+        return $this->render('SOFFTAnglaisBundle:Register:form.html.twig', array(
+                    'form' => $form->createView()
+                        )
+        );
+
+        
+    }
+    
+    public function logoutAction() {
+        return new Response("ok");
     }
     
     

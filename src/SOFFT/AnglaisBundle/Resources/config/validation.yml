@@ -1,13 +1,11 @@
 SOFFT\AnglaisBundle\Entity\User:
   constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: {fields: [username], message:"Ce nom d'utilisateur est déjà utilisé. Veuillez en choisir un autre."}
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: {fields: [personaId], message: "Ce compte existe déjà" }
   properties:
-    password:
-      - NotBlank: {message: "Le mot de passe ne peut être vide"}
-      - MinLength: { limit: 3, message: "Votre mot de passe doit contenir plus de trois lettres" }
     username:
       - NotBlank: { message: "Le nom d'utilisateur ne peut être vide"}
-      - MinLength: {limit: 3, message: "Votre nom d'utilisateur doit contenir plus de trois lettres" }
+      - Length: {min: 3, minMessage: "Votre nom d'utilisateur doit contenir plus de trois lettres", max: 30, maxMessage: "Votre nom d'utilisateur doit contenir moins de 30 lettres" }
 
 SOFFT\AnglaisBundle\Entity\Mot:
   constraints:
