@@ -1,0 +1,15 @@
+parameters:
+    database_driver: pdo_sqlite
+    database_host:   localhost
+    database_port:   
+    database_name:   "symfony"
+    database_user:   "root"
+    database_password: "root"
+    database_path:   "/home/julien/www/anglaistech/bd.sqlite"
+    mailer_transport:  "smtp"
+    mailer_host:     "localhost"
+    mailer_user:     ""
+    mailer_password: ""
+    locale:          "fr"
+    secret:          "1531c0fe6d11fb6cba559559840e7b7796f03241"
+    admin_password:  "admin"

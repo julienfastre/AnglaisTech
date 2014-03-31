@@ -1,4 +1,4 @@
-
+composer.phar
 /web/bundles/acmedemo/
 /web/bundles/framework/
 /web/bundles/sensiodistribution/
@@ -9,7 +9,7 @@
 /app/cache/*
 /app/logs/*
 /vendor/
-/app/config/parameters.ini
+/app/config/parameters.yml
 bd.sqlite
 
 
