@@ -3,7 +3,7 @@ composer.phar
 /web/bundles/framework/
 /web/bundles/sensiodistribution/
 /web/bundles/webprofiler/
-
+src/SOFFT/AnglaisBundle/Resources/raw/.sass-cache
 
 /app/bootstrap*
 /app/cache/*
