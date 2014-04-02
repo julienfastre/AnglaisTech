@@ -53,3 +53,16 @@ SAB_quizz_create:
 SAB_quizz_play:
   pattern: /quizz/play/{quizzId}
   defaults: {_controller: SOFFTAnglaisBundle:Quizz:play }
+  
+  
+SAB_tag_liste:
+    pattern: /tag/liste
+    defaults: { _controller: SOFFTAnglaisBundle:Tag:list }
+    
+SAB_tag_create:
+    pattern: /tag/create
+    defaults: { _controller: SOFFTAnglaisBundle:Tag:create }
+    
+SAB_tag_update:
+    pattern: /tag/{id}/update
+    defaults: { _controller: SOFFTAnglaisBundle:Tag:update }

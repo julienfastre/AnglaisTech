@@ -4,8 +4,21 @@
 
 {% block body %}
  
-    <h1>Merci de vous authentifier !</h1>
+    {% if app.user %}
+        <h1>Bienvenue, {{ app.user.username }}</h1>
+        
+        <p>Que voulez-vous faire ?</p>
+        
+        <ul>
+            <li><a href="{{ path('SAB_liste_mot')}}">Commencer à compléter les listes de mots</a></li>
+            <li><a href="{{ path('SAB_quizz_liste')}}">Répondre aux Quizz</a></li>
+            <li>{{ persona_logout_button() }}</li>
+        </ul>
+    {% else %}
+        
+        <h1>Merci de présenter !</h1>
     
     <p> {{ persona_login_button() }} </p>
     
+    {% endif %}
 {% endblock body %}

@@ -76,7 +76,7 @@ class MotController extends Controller {
         $form = $this->createForm(new \SOFFT\AnglaisBundle\Form\MotType(), $mot);
         
         if($request->getMethod() == 'POST') {
-            $form->bindRequest($request);
+            $form->handleRequest($request);
             
             if ($form->isValid()) {
                 
@@ -88,9 +88,11 @@ class MotController extends Controller {
                     $this->getDoctrine()->getManager()->persist($mot);
                 $this->getDoctrine()->getManager()->flush();
                 
-                $this->get('session')->getFlashBag()->set('notice', 'Votre mot a été créé');
+                $this->get('session')->getFlashBag()->set('success', 'Votre mot a été créé');
                                 
                 return $this->redirect($this->generateUrl('SAB_liste_mot'));
+            } else {
+                $this->get('session')->getFlashBag()->set('warning', "Erreur dans la création");
             }
         }
         
@@ -122,7 +124,7 @@ class MotController extends Controller {
         $form = $this->createForm(new \SOFFT\AnglaisBundle\Form\MotType(), $mot);
         
         if($request->getMethod() == 'POST') {
-            $form->bindRequest($request);
+            $form->handleRequest($request);
             
             if ($form->isValid()) {
                 
@@ -134,9 +136,11 @@ class MotController extends Controller {
                     $this->getDoctrine()->getManager()->persist($user);
                 $this->getDoctrine()->getManager()->flush();
                 
-                $this->get('session')->getFlashBag()->set('notice', 'Vos modifications ont été enregistrées');
+                $this->get('session')->getFlashBag()->set('success', 'Vos modifications ont été enregistrées');
                                 
                 return $this->redirect($this->generateUrl('SAB_liste_mot'));
+            }else {
+                $this->get('session')->getFlashBag()->set('warning', "Erreur dans l'enregistrement");
             }
         }
         

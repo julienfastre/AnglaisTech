@@ -21,4 +21,8 @@ SOFFT\AnglaisBundle\Entity\Mot:
     cadenaswho:
       targetEntity: User
       nullable: true
+  manyToMany:
+      tags:
+          targetEntity: Tag
+          
       

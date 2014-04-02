@@ -62,7 +62,7 @@ class Mot
         if ($fr === NULL) 
             $this->fr = '' ;
         else
-            $this->fr = $fr;
+            $this->fr = trim($fr);
     }
 
     /**
@@ -85,7 +85,7 @@ class Mot
         if ($en === NULL)
             $this->en = '';
         else
-            $this->en = $en;
+            $this->en = trim($en);
     }
 
     /**
@@ -202,10 +202,10 @@ class Mot
     }
     
     public function isValid(ExecutionContext $context){
-        if ($this->getEn() === NULL && $this->getFr() === NULL) {
+        if ($this->getEn() === '' && $this->getFr() === '') {
             $propertyPath = $context->getPropertyPath() . '.fr';
             $context->setPropertyPath($propertyPath);
-            $context->addViolation('Le mot français ou anglais doit être rempli', array(), null);
+            $context->addViolation('Veuillez remplir un des deux mots: l\'anglais ou le français', array(), null);
         }
     }
 }

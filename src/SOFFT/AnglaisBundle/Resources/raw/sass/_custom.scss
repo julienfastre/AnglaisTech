@@ -1,1 +1,11 @@
-// Your custom SCSS should be written here...
+ul.tag_list {
+    li {
+        padding: 5px;
+        text-align: center;
+    }
+    
+    a.action {
+        color: black;
+    }
+}
+

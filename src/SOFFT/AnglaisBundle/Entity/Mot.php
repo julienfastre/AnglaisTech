@@ -45,6 +45,19 @@ class Mot
     
     const DUREE_CADENAS = 60;
     const DUREE_CADENAS_INTERVAL = 'PT60S';
+    
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $tags;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     
     public function getId()
@@ -207,5 +220,39 @@ class Mot
             $context->setPropertyPath($propertyPath);
             $context->addViolation('Veuillez remplir un des deux mots: l\'anglais ou le français', array(), null);
         }
+    }
+
+
+    /**
+     * Add tags
+     *
+     * @param \SOFFT\AnglaisBundle\Entity\Tag $tags
+     * @return Mot
+     */
+    public function addTag(\SOFFT\AnglaisBundle\Entity\Tag $tags)
+    {
+        $this->tags[] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Remove tags
+     *
+     * @param \SOFFT\AnglaisBundle\Entity\Tag $tags
+     */
+    public function removeTag(\SOFFT\AnglaisBundle\Entity\Tag $tags)
+    {
+        $this->tags->removeElement($tags);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }

@@ -3,11 +3,11 @@
 namespace SOFFT\AnglaisBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\Form\FormBuilderInterface;
 
 class MotType extends AbstractType
 {
-    public function buildForm(FormBuilder $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('fr', 'textarea', array(
@@ -18,6 +18,11 @@ class MotType extends AbstractType
             ))
             ->add('explication', 'textarea', array(
                 'required' => false
+            ))
+            ->add('tags', 'entity', array(
+                'class' => 'SOFFTAnglaisBundle:Tag',
+                'multiple' => true,
+                'expanded' => true
             ))
             
         ;

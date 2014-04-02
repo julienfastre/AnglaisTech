@@ -19,14 +19,18 @@ security:
         anonymous: ~
         form_login:
           login_path: /login
+          always_use_default_target_path: false
+          default_target_path:            /
+          target_path_parameter:          _target_path
+          use_referer:                    false
         logout:
-          path: /persona/logout
+          path: /persona/logout  
           #http_basic: ~
           #    realm: "Secured Demo Area"
 
     access_control:
       - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-    #  - { path: ^/, roles: [ROLE_USER] }
+      - { path: ^/, roles: [ROLE_USER] }
       
         #- { path: ^/_internal, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }

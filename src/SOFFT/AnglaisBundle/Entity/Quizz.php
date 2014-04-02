@@ -159,4 +159,14 @@ class Quizz
     {
         return $this->type;
     }
+
+    /**
+     * Remove mots
+     *
+     * @param \SOFFT\AnglaisBundle\Entity\Mot $mots
+     */
+    public function removeMot(\SOFFT\AnglaisBundle\Entity\Mot $mots)
+    {
+        $this->mots->removeElement($mots);
+    }
 }

@@ -4,11 +4,12 @@ namespace SOFFT\AnglaisBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use CL\PersonaUserBundle\Entity\PersonaUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * SOFFT\AnglaisBundle\Entity\User
  */
-class User implements PersonaUserInterface
+class User implements PersonaUserInterface, UserInterface
 {
     /**
      * @var integer $id
