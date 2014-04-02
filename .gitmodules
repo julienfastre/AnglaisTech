@@ -1,0 +1,3 @@
+[submodule "src/SOFFT/AnglaisBundle/Resources/external/gumby"]
+	path = src/SOFFT/AnglaisBundle/Resources/external/gumby
+	url = https://github.com/GumbyFramework/Gumby.git
