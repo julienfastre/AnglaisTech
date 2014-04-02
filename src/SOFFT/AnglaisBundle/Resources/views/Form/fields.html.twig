@@ -1,0 +1,154 @@
+
+
+{% block form_row %}
+{% spaceless %}
+    <div class="field inline {% spaceless %} 
+{% if errors|length > 0 %}
+has_error danger
+{% endif %}
+ {% endspaceless %}">
+        {{ form_label(form) }}
+        {{ form_widget(form)  }}
+        {{ form_errors(form) }}
+    </div>
+{% endspaceless %}
+{% endblock form_row %}
+
+
+{% block form_widget_simple %}
+{% spaceless %}
+{% if attr.class is not defined %}
+    {% set attr = {'class' : 'input wide'} %}
+{% endif %}
+    {% set type = type|default('text') %}
+    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+{% endspaceless %}
+{% endblock form_widget_simple %}
+    
+{% block textarea_widget %}
+{% spaceless %}
+{% if attr.class is not defined %}
+    {% set attr = {'class' : 'input textarea'} %}
+{% endif %}
+    <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
+{% endspaceless %}
+{% endblock textarea_widget %}
+    
+{% block choice_widget_collapsed %}
+    <div class="picker">
+{% spaceless %}
+    {% if required and empty_value is none and not empty_value_in_choices %}
+        {% set required = false %}
+    {% endif %}
+    <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
+        {% if empty_value is not none %}
+            <option value=""{% if required and value is empty %} selected="selected"{% endif %}>{{ empty_value|trans({}, translation_domain) }}</option>
+        {% endif %}
+        {% if preferred_choices|length > 0 %}
+            {% set options = preferred_choices %}
+            {{ block('choice_widget_options') }}
+            {% if choices|length > 0 and separator is not none %}
+                <option disabled="disabled">{{ separator }}</option>
+            {% endif %}
+        {% endif %}
+        {% set options = choices %}
+        {{ block('choice_widget_options') }}
+    </select>
+{% endspaceless %}
+    </div>
+{% endblock choice_widget_collapsed %}    
+    
+{% block choice_widget_expanded %}
+{% spaceless %}
+    <div {{ block('widget_container_attributes') }}>
+    {% for child in form %}
+        {{ form_widget(child) }}
+        {{ form_label(child, '', {'label_attr': { 'class' : 'inline radio'} }) }}
+    {% endfor %}
+    </div>
+{% endspaceless %}
+{% endblock choice_widget_expanded %}
+
+
+{% block date_widget %}
+{% spaceless %}
+    {% if widget == 'single_text' %}
+        {% set attr = {'class' : 'input wide datepicker'} %}
+        {{ block('form_widget_simple') }}
+    {% else %}
+        <div {{ block('widget_container_attributes') }}>
+            {{ date_pattern|replace({
+                '{{ year }}': form_widget(form.year ),
+                '{{ month }}': form_widget(form.month ),
+                '{{ day }}': form_widget(form.day ),
+            })|raw }}
+        </div>
+    {% endif %}
+{% endspaceless %}
+{% endblock date_widget %}
+
+{% block form_label %}
+{% spaceless %}
+    {% if label is not sameas(false) %}
+        {% if not compound %}
+            {% set label_attr = label_attr|merge({'for': id}) %}
+        {% endif %}
+        {% if required %}
+            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+        {% endif %}
+        {% if label is empty %}
+            {% set label = name|humanize %}
+        {% endif %}
+        <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ label|trans({}, translation_domain) }}</label>
+    {% endif %}
+{% endspaceless %}
+{% endblock form_label %}
+        
+        
+{% block belgian_national_number_widget %}
+    {% spaceless %}
+        {{ form_widget(form.inversed_date, { 'attr': { 'class': 'input belgian_national_number_inversed_date'  } } ) }}
+        {{ form_widget(form.daily_counter, { 'attr': { 'class': 'input belgian_national_number_daily_counter' } } ) }}
+        {{ form_widget(form.control_digit, { 'attr': { 'class': 'input belgian_national_number_control_digit' } } ) }}
+    {% endspaceless %}
+{% endblock %}  
+        
+        
+{% block form_errors %}
+{% spaceless %}
+    {% if errors|length > 0 %}
+    <ul class="errors">
+        {% for error in errors %}
+            <li>{{ error.message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endspaceless %}
+{% endblock form_errors %}      
+
+ 
+{#    
+{% block widget_attributes %}
+{% spaceless %}
+{% set class_added = false %}
+
+{% if gumby_class_wide is not defined %}
+{% set gumby_class_wide = 'normal' %}
+{% endif %}
+
+{% set gumby_class_input = 'input' %}
+
+    id="{{ id }}" name="{{ full_name }}"{% if read_only %} readonly="readonly"{% endif %}{% if disabled %} disabled="disabled"{% endif %}{% if required %} required="required"{% endif %}{% if max_length %} maxlength="{{ max_length }}"{% endif %}{% if pattern %} pattern="{{ pattern }}"{% endif %}
+    {% for attrname, attrvalue in attr %}
+        {% if attrname in ['placeholder', 'title'] %}{{ attrname }}="{{ attrvalue|trans({}, translation_domain) }}" 
+             class="{{ gumby_class_input }} {{gumby_class_wide}} {{attrvalue}}" {% set class_added = true %}
+        {% else %}{{ attrname }}="{{ attrvalue }}" 
+        {% endif %}
+    {% endfor %}
+    
+    {% if class_added == false %}
+        class="{{ gumby_class_input }} {{gumby_class_wide}}"
+    {% endif %}
+{% endspaceless %}
+{% endblock widget_attributes %}    
+#}

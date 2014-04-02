@@ -1,0 +1,23 @@
+{% extends 'SOFFTAnglaisBundle::layout.html.twig' %}
+
+
+{% block body %}
+    
+    <div class="btn medium warning"><a href="{{ path('SAB_tag_create') }}">Créer une étiquette</a></div>
+    
+    <ul class="four_up tiles tag_list">
+        
+        {% for tag in tags %}
+            <li>
+                <div>
+                    <p> <span class="label" style="background-color: {{tag.color}}">{{ tag.label }} </span> 
+                        <a href="{{ path('SAB_tag_update', { 'id' : tag.id } ) }}" class="action">
+                            <i class="icon-pencil"></i></a></p>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    
+    <div class="btn medium warning"><a href="{{ path('SAB_tag_create') }}">Créer une étiquette</a></div>
+    
+{% endblock body %}

@@ -1,0 +1,14 @@
+SOFFT\AnglaisBundle\Entity\Tag:
+    type: entity
+    table: tags
+    id:
+        id:
+            type: integer
+            generator: { strategy: auto }
+    fields:
+        label:
+            type: string
+            length: 250
+        color:
+            type: string
+            length: 30

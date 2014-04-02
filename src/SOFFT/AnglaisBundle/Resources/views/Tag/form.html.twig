@@ -1,0 +1,19 @@
+{% extends 'SOFFTAnglaisBundle::layout.html.twig' %}
+
+
+{% block body %}
+    
+    {{ form_start(form) }}
+    
+    {{ form_row(form.label, {'label' : "Nom de l'étiquette"} ) }}
+    
+    {{ form_row(form.color, {'label' : "Couleur associée"} ) }}
+    
+    {{form_rest(form) }}
+    
+    <div class="medium warning btn"><button type="submit">Envoi</button></div>
+    
+    {{ form_end(form) }}
+    
+    
+{% endblock body %}
