@@ -9,3 +9,13 @@ ul.tag_list {
     }
 }
 
+ul.pagination {
+    
+    text-align: center;
+    
+    li {
+        display: inline-block;
+        margin-left: 4px;
+        margin-right: 4px;
+    }
+}

@@ -1702,3 +1702,6 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
 
 ul.tag_list li { padding: 5px; text-align: center; }
 ul.tag_list a.action { color: black; }
+
+ul.pagination { text-align: center; }
+ul.pagination li { display: inline-block; margin-left: 4px; margin-right: 4px; }
